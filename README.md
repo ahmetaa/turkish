@@ -12,7 +12,7 @@ Default case mappings fails for Turkish `i->İ` and `I->ı` conversions.
 This library may not be necessary for Flutter or web projects if they use underlying system methods for locale specific text operations.
 But it can be handy when that is not the case.  
 
-Current implementation does not handle two code-unit variations yet. Complete special casing rules are defined [here](ftp://ftp.unicode.org/Public/UCD/latest/ucd/SpecialCasing.txt).  
+Current implementation does not handle two code-unit variations. Complete special casing rules are defined [here](https://unicode.org/Public/UNIDATA/SpecialCasing.txt).  
 
 ## Usage
 
