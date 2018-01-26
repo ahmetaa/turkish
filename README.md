@@ -6,11 +6,12 @@ This library provides these functions for Turkish language:
 - Converting strings to lower, upper and title case. 
 - Regular and ignore case string sorting.
 
-Those operations does not work correctly in Dart core libraries because Dart uses default unicode mappings.
-Default case mappings work incorrectly for Turkish i->İ and I->ı conversions.
+Casing operations does not work correctly in Dart core libraries because Dart uses default unicode mappings.
+Default case mappings fails for Turkish `i->İ` and `I->ı` conversions.
 
-This library may not be necessary for Flutter or Web projects if they use underlying system methods for locale specific text operations.
-But it can be handy when that is not the case. Case methods can be used for some other Turkic alphabets as well (such as  Azerbaijani). 
+This library may not be necessary for Flutter or web projects if they use underlying system methods for locale specific text operations.
+But it can be handy when that is not the case.  
+
 Current implementation does not handle two code-unit variations yet. Complete special casing rules are defined [here](ftp://ftp.unicode.org/Public/UCD/latest/ucd/SpecialCasing.txt).  
 
 ## Usage
@@ -60,4 +61,5 @@ Usage Example:
 	Turkish Sort Ignore Case= [aç, ad, ağ, Az]
 
 ## Change List
-*1.0.0a* Convert from [dotless_i](https://github.com/ahmetaa/dotless_i) project. Make it Dart2 compatible. Add letters with circumflex and pluralization. 
+
+*0.1.0* Convert from [dotless_i](https://github.com/ahmetaa/dotless_i) project. Make it Dart2 compatible. Add letters with circumflex and pluralization. 
