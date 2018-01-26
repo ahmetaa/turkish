@@ -62,4 +62,5 @@ Usage Example:
 
 ## Change List
 
-*0.1.0* Convert from [dotless_i](https://github.com/ahmetaa/dotless_i) project. Make it Dart2 compatible. Add letters with circumflex and pluralization. 
+*0.1.0* Convert from [dotless_i](https://github.com/ahmetaa/dotless_i) project. 
+Make it Dart2 compatible. Add letters with circumflex to sorting mechanism. 
