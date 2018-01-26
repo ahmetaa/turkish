@@ -1,3 +1,7 @@
+### 0.1.0+1
+
+- Fix homepage in pub.yaml
+
 ### 0.1.0
 
 - Initial version, converted from [dotless_i](https://github.com/ahmetaa/dotless_i) project.
