@@ -1,7 +1,7 @@
 turkish
 =========
 
-This library provides these functions for Turkish language:
+This library provides these functions for Turkish language for Dart:
 
 - Converting strings to lower, upper and title case. 
 - Regular and ignore case string sorting.
@@ -26,7 +26,9 @@ Add this line to the import section:
 
 There is a single object instance exposed from library called `turkish`. All operations are accessed through this object. 
 
-Usage Example:  
+See also related Pub [page](https://pub.dartlang.org/packages/turkish).
+
+Example:  
 
 	import 'package:turkish/turkish';
 	...

@@ -22,8 +22,9 @@ class _Turkish {
           toAppend.clear();
         }
         buffer.write("İ");
-      } else
+      } else {
         toAppend.add(codeUnit);
+      }
     }
     if (toAppend.length > 0) {
       buffer.write(new String.fromCharCodes(toAppend).toUpperCase());
@@ -32,10 +33,8 @@ class _Turkish {
   }
 
   String _toUpper1Length(String input) {
-    if (input.codeUnitAt(0) == _latinSmallLetterICode)
-      return "İ";
-    else
-      return input.toUpperCase();
+    return (input.codeUnitAt(0) == _latinSmallLetterICode) ?
+    "İ" : input.toUpperCase();
   }
 
   /**
@@ -64,10 +63,8 @@ class _Turkish {
   }
 
   String _toLower1Length(String input) {
-    if (input.codeUnitAt(0) == _latinCapitalLetterICode)
-      return "ı";
-    else
-      return input.toLowerCase();
+    return (input.codeUnitAt(0) == _latinCapitalLetterICode) ?
+    "ı" : input.toLowerCase();
   }
 
   /// Some code is used from Dart core.
