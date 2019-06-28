@@ -1,11 +1,11 @@
 name: turkish
-version: 0.1.0+1
+version: 0.1.0+2
 authors:
 - Ahmet A. Akın <ahmetaa@gmail.com>
 - Mehmet D. Akın <mdakin@gmail.com>
 description: Turkish String upper-lower case converter and comparators for sorting
 homepage: https://github.com/ahmetaa/turkish
 environment:
-  sdk: '>=1.20.0 <3.0.0'
+  sdk: '>=2.0.0 <3.0.0'
 dev_dependencies:
   test: '>=0.12.30'
