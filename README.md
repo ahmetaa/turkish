@@ -22,7 +22,7 @@ Add this line to pubspec.yaml:
 
 Add this line to the import section:
     
-    import 'package:turkish/turkish'
+    import 'package:turkish/turkish.dart'
 
 There is a single object instance exposed from library called `turkish`. All operations are accessed through this object. 
 
