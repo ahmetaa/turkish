@@ -9,8 +9,8 @@ This library provides these functions for Turkish language for Dart:
 Some casing operations for Turkish does not work correctly in Dart core libraries because Dart uses default unicode mappings.
 Default case mappings fails for Turkish `i->İ` and `I->ı` conversions.
 
-This library may not be necessary for Flutter or web projects if they use underlying system methods for locale specific text operations.
-But it can be handy when that is not the case.  
+**This library may not be necessary for Flutter or web projects if they use underlying system methods for locale specific text operations.
+But it can be handy when that is not the case.**
 
 Current implementation does not handle two code-unit variations. Complete special casing rules are defined [here](https://unicode.org/Public/UNIDATA/SpecialCasing.txt).  
 
