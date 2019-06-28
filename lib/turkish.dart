@@ -1,24 +1,22 @@
 library turkish;
 
-final _Turkish turkish = new _Turkish();
+final _Turkish turkish = _Turkish();
 
+/// Provides methods for correct Turkish case conversions and collation.
 class _Turkish {
-
   int _latinCapitalLetterICode = 0x49;
   int _latinSmallLetterICode = 0x69;
 
-  /**
-   * Returns upper case form of a Turkish String.
-   */
+  /// Returns upper case form of a Turkish String.
   String toUpperCase(String input) {
     if (input.length == 0) return "";
     if (input.length == 1) return _toUpper1Length(input);
-    var buffer = new StringBuffer();
-    List<int> toAppend = new List<int>();
+    final buffer = StringBuffer();
+    final toAppend = List<int>();
     for (int codeUnit in input.codeUnits) {
       if (codeUnit == _latinSmallLetterICode) {
         if (toAppend.length > 0) {
-          buffer.write(new String.fromCharCodes(toAppend).toUpperCase());
+          buffer.write(String.fromCharCodes(toAppend).toUpperCase());
           toAppend.clear();
         }
         buffer.write("İ");
@@ -27,28 +25,27 @@ class _Turkish {
       }
     }
     if (toAppend.length > 0) {
-      buffer.write(new String.fromCharCodes(toAppend).toUpperCase());
+      buffer.write(String.fromCharCodes(toAppend).toUpperCase());
     }
     return buffer.toString();
   }
 
   String _toUpper1Length(String input) {
-    return (input.codeUnitAt(0) == _latinSmallLetterICode) ?
-    "İ" : input.toUpperCase();
+    return (input.codeUnitAt(0) == _latinSmallLetterICode)
+        ? "İ"
+        : input.toUpperCase();
   }
 
-  /**
-   * Returns lower case form of a Turkish String.
-   */
+  /// Returns lower case form of a Turkish String.
   String toLowerCase(String input) {
     if (input.length == 0) return "";
     if (input.length == 1) return _toLower1Length(input);
-    var buffer = new StringBuffer();
-    List<int> toAppend = new List<int>();
+    final buffer = StringBuffer();
+    final toAppend = List<int>();
     for (int codeUnit in input.codeUnits) {
       if (codeUnit == _latinCapitalLetterICode) {
         if (toAppend.length > 0) {
-          buffer.write(new String.fromCharCodes(toAppend).toLowerCase());
+          buffer.write(String.fromCharCodes(toAppend).toLowerCase());
           toAppend.clear();
         }
         buffer.write("ı");
@@ -57,21 +54,22 @@ class _Turkish {
       }
     }
     if (toAppend.length > 0) {
-      buffer.write(new String.fromCharCodes(toAppend).toLowerCase());
+      buffer.write(String.fromCharCodes(toAppend).toLowerCase());
     }
     return buffer.toString();
   }
 
   String _toLower1Length(String input) {
-    return (input.codeUnitAt(0) == _latinCapitalLetterICode) ?
-    "ı" : input.toLowerCase();
+    return (input.codeUnitAt(0) == _latinCapitalLetterICode)
+        ? "ı"
+        : input.toLowerCase();
   }
 
   /// Some code is used from Dart core.
   static int _compareTr(String a, String b, bool ignoreCase) {
-    int aLength = a.length;
-    int bLength = b.length;
-    int len = (aLength < bLength) ? aLength : bLength;
+    final aLength = a.length;
+    final bLength = b.length;
+    final len = (aLength < bLength) ? aLength : bLength;
     for (int i = 0; i < len; i++) {
       int aCodePoint = a.codeUnitAt(i);
       int bCodePoint = b.codeUnitAt(i);
@@ -100,14 +98,11 @@ class _Turkish {
     return 0;
   }
 
-  /**
-   * Returns Title cased form of a Turkish String.
-   */
+  /// Returns Title cased form of a Turkish String.
   String toTitleCase(String input) {
     if (input.length == 0) return "";
     if (input.length == 1) return _toUpper1Length(input);
-    return "${_toUpper1Length(input.substring(0, 1))}${toLowerCase(
-        input.substring(1))}";
+    return "${_toUpper1Length(input.substring(0, 1))}${toLowerCase(input.substring(1))}";
   }
 
   /// Turkish alphabet aware String Comparator.
@@ -117,21 +112,21 @@ class _Turkish {
   /// Case insensitive Turkish alphabet aware String Comparator.
   final Comparator<String> comparatorIgnoreCase =
       (String a, String b) => _compareTr(a, b, true);
-
 }
 
-final _Lookup _codeUnitLookup = new _Lookup();
+final _Lookup _codeUnitLookup = _Lookup();
+
+// English characters and Turkish characters with circumflex are included
+// in alphabet.
+const alphabet =
+    "AÂBCÇDEFGĞHIİÎJKLMNOÖPQRSŞTUÛÜVWXYZaâbcçdefgğhıiîjklmnoöpqrsştuûüvwxyz";
 
 class _Lookup {
-  List<int> orderLookup = new List<int>.filled(0x160, -1);
-  List<int> orderLookupIgnoreCase = new List<int>.filled(0x160, -1);
+  List<int> orderLookup = List<int>.filled(0x160, -1);
+  List<int> orderLookupIgnoreCase = List<int>.filled(0x160, -1);
 
   _Lookup() {
-    // English characters and Turkish characters with circumflex are included
-    // in alphabet.
-    var alphabet =
-        "AÂBCÇDEFGĞHIİÎJKLMNOÖPQRSŞTUÛÜVWXYZaâbcçdefgğhıiîjklmnoöpqrsştuûüvwxyz";
-    var letterCount = alphabet.length ~/ 2;
+    final letterCount = alphabet.length ~/ 2;
     for (int i = 0; i < alphabet.length; ++i) {
       int index = alphabet.codeUnitAt(i);
       orderLookup[index] = i;
@@ -146,5 +141,4 @@ class _Lookup {
 
   int getOrderIgnoreCase(int codeUnit) =>
       _isOutOfTable(codeUnit) ? -1 : orderLookupIgnoreCase[codeUnit];
-
 }
