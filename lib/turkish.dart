@@ -9,13 +9,13 @@ class _Turkish {
 
   /// Returns upper case form of a Turkish String.
   String toUpperCase(String input) {
-    if (input.length == 0) return "";
+    if (input.isEmpty) return "";
     if (input.length == 1) return _toUpper1Length(input);
     final buffer = StringBuffer();
     final toAppend = List<int>();
     for (int codeUnit in input.codeUnits) {
       if (codeUnit == _latinSmallLetterICode) {
-        if (toAppend.length > 0) {
+        if (toAppend.isNotEmpty) {
           buffer.write(String.fromCharCodes(toAppend).toUpperCase());
           toAppend.clear();
         }
@@ -24,7 +24,7 @@ class _Turkish {
         toAppend.add(codeUnit);
       }
     }
-    if (toAppend.length > 0) {
+    if (toAppend.isNotEmpty) {
       buffer.write(String.fromCharCodes(toAppend).toUpperCase());
     }
     return buffer.toString();
@@ -38,13 +38,13 @@ class _Turkish {
 
   /// Returns lower case form of a Turkish String.
   String toLowerCase(String input) {
-    if (input.length == 0) return "";
+    if (input.isEmpty) return "";
     if (input.length == 1) return _toLower1Length(input);
     final buffer = StringBuffer();
     final toAppend = List<int>();
     for (int codeUnit in input.codeUnits) {
       if (codeUnit == _latinCapitalLetterICode) {
-        if (toAppend.length > 0) {
+        if (toAppend.isNotEmpty) {
           buffer.write(String.fromCharCodes(toAppend).toLowerCase());
           toAppend.clear();
         }
@@ -53,7 +53,7 @@ class _Turkish {
         toAppend.add(codeUnit);
       }
     }
-    if (toAppend.length > 0) {
+    if (toAppend.isNotEmpty) {
       buffer.write(String.fromCharCodes(toAppend).toLowerCase());
     }
     return buffer.toString();
@@ -100,7 +100,7 @@ class _Turkish {
 
   /// Returns Title cased form of a Turkish String.
   String toTitleCase(String input) {
-    if (input.length == 0) return "";
+    if (input.isEmpty) return "";
     if (input.length == 1) return _toUpper1Length(input);
     return "${_toUpper1Length(input.substring(0, 1))}${toLowerCase(input.substring(1))}";
   }
