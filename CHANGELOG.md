@@ -1,3 +1,8 @@
+### 0.1.0+2
+
+- Remove new keyword, use isEmpty and isNotEmpty, small fixes.
+- Update dependencies.
+
 ### 0.1.0+1
 
 - Fix homepage in pub.yaml
