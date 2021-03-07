@@ -2,6 +2,20 @@ library turkish;
 
 final _Turkish turkish = _Turkish();
 
+extension TurkishStrings on String {
+  String toUpperCaseTr() {
+    return turkish.toUpperCase(this);
+  }
+
+  String toLowerCaseTr() {
+    return turkish.toLowerCase(this);
+  }
+
+  String toTitleCaseTr() {
+    return turkish.toTitleCase(this);
+  }
+}
+
 /// Provides methods for correct Turkish case conversions and collation.
 class _Turkish {
   int _latinCapitalLetterICode = 0x49;
@@ -12,7 +26,7 @@ class _Turkish {
     if (input.isEmpty) return "";
     if (input.length == 1) return _toUpper1Length(input);
     final buffer = StringBuffer();
-    final toAppend = List<int>();
+    final List<int> toAppend = [];
     for (int codeUnit in input.codeUnits) {
       if (codeUnit == _latinSmallLetterICode) {
         if (toAppend.isNotEmpty) {
@@ -41,7 +55,7 @@ class _Turkish {
     if (input.isEmpty) return "";
     if (input.length == 1) return _toLower1Length(input);
     final buffer = StringBuffer();
-    final toAppend = List<int>();
+    final List<int> toAppend = [];
     for (int codeUnit in input.codeUnits) {
       if (codeUnit == _latinCapitalLetterICode) {
         if (toAppend.isNotEmpty) {
@@ -122,8 +136,8 @@ const alphabet =
     "AÂBCÇDEFGĞHIİÎJKLMNOÖPQRSŞTUÛÜVWXYZaâbcçdefgğhıiîjklmnoöpqrsştuûüvwxyz";
 
 class _Lookup {
-  List<int> orderLookup = List<int>.filled(0x160, -1);
-  List<int> orderLookupIgnoreCase = List<int>.filled(0x160, -1);
+  var orderLookup = List<int>.filled(0x160, -1);
+  var orderLookupIgnoreCase = List<int>.filled(0x160, -1);
 
   _Lookup() {
     final letterCount = alphabet.length ~/ 2;

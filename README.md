@@ -18,38 +18,80 @@ Current implementation does not handle two code-unit variations. Complete specia
 
 Add this line to pubspec.yaml:
 
-    turkish: '>=0.1.0'
+    turkish: '>=0.2.0'
 
 Add this line to the import section:
     
     import 'package:turkish/turkish.dart'
 
-There is a single object instance exposed from library called `turkish`. All operations are accessed through this object. 
+## Extension methods
+There are three extension methods that can be used for upper, lower and title casing.
+
+```dart
+import 'package:turkish/turkish.dart';
+
+// Uses extension methods.
+main() {
+  // upperCaseTr
+  var inputL = "kısa şiir";
+  print("UpperCase for [$inputL]");
+  print("Default= ${inputL.toUpperCase()}, "
+      "Turkish=${inputL.toUpperCaseTr()}\n");
+
+  // lowerCaseTr
+  var inputU = "KISA ŞİİR";
+  print("LowerCase for [$inputU]");
+  print("Default= ${inputU.toLowerCase()}, "
+      "Turkish=${inputU.toLowerCaseTr()}\n");
+}
+```
+	Output:
+	UpperCase for [kısa şiir]
+	Default= KISA ŞIIR, Turkish=KISA ŞİİR
+
+	LowerCase for [KISA ŞİİR]
+	Default= kisa şiir, Turkish=kısa şiir
+
+
+## 'turkish' object.
+Also, for turkish specific sorting and casing 
+a single object instance exposed from library called `turkish` can be used. 
 
 See also related Pub [page](https://pub.dartlang.org/packages/turkish).
 
 Example:  
 
-	import 'package:turkish/turkish';
-	...
-	var inputL = "kısa şiir";
-	print("UpperCase for [$inputL]");
-	print("Default= ${inputL.toUpperCase()}, Turkish=${turkish.toUpperCase(inputL)}\n");
+```dart
+import 'package:turkish/turkish.dart';
 
-	var inputU = "KISA ŞİİR";
-	print("LowerCase for [$inputU]");
-	print("Default= ${inputU.toLowerCase()}, Turkish=${turkish.toLowerCase(inputU)}\n");
+main() {
+  // upperCaseTr
+  var inputL = "kısa şiir";
+  print("UpperCase for [$inputL]");
+  print("Default= ${inputL.toUpperCase()}, "
+      "Turkish=${turkish.toUpperCase(inputL)}\n");
 
-	var list = ["Az","ağ","aç","ad"];
-	print("Input= $list");
-	print("Default Sort= ${list..sort()}");
+  // lowerCaseTr
+  var inputU = "KISA ŞİİR";
+  print("LowerCase for [$inputU]");
+  print("Default= ${inputU.toLowerCase()}, "
+      "Turkish=${turkish.toLowerCase(inputU)}\n");
 
-	list = ["Az","ağ","aç","ad"];
-	print("Turkish Sort= ${list..sort(turkish.comparator)}");
+  // sort Default
+  var list = ["Az", "ağ", "aç", "ad"];
+  print("Input= $list");
+  print("Default Sort= ${list..sort()}");
 
-	list = ["Az","ağ","aç","ad"];
-	print("Turkish Sort Ignore Case= ${list..sort(turkish.comparatorIgnoreCase)}");
+  // sort Turkish  
+  list = ["Az", "ağ", "aç", "ad"];
+  print("Turkish Sort= ${list..sort(turkish.comparator)}");
 
+  // sort Turkish ignore case  
+  list = ["Az", "ağ", "aç", "ad"];
+  print("Turkish Sort Ignore Case= "
+      "${list..sort(turkish.comparatorIgnoreCase)}");
+}
+```
 	Output:
 	UpperCase for [kısa şiir]
 	Default= KISA ŞIIR, Turkish=KISA ŞİİR

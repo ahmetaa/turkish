@@ -1,13 +1,13 @@
 import 'package:turkish/turkish.dart';
 
 main() {
-  // upperCaseTr
+  // upperCase
   var inputL = "kısa şiir";
   print("UpperCase for [$inputL]");
   print("Default= ${inputL.toUpperCase()}, "
       "Turkish=${turkish.toUpperCase(inputL)}\n");
 
-  // lowerCaseTr
+  // lowerCase
   var inputU = "KISA ŞİİR";
   print("LowerCase for [$inputU]");
   print("Default= ${inputU.toLowerCase()}, "
