@@ -43,6 +43,13 @@ main() {
   print("LowerCase for [$inputU]");
   print("Default= ${inputU.toLowerCase()}, "
       "Turkish=${inputU.toLowerCaseTr()}\n");
+
+  // compareToTr
+  var zonguldak = "Zonguldak";
+  var cankiri = "Çankırı";
+  print("Comparison for [$zonguldak] and [$cankiri]");
+  print("Default= ${zonguldak.compareTo(cankiri)}, "
+      "Turkish=${zonguldak.compareToTr(cankiri)}\n");
 }
 ```
 	Output:
@@ -51,6 +58,9 @@ main() {
 
 	LowerCase for [KISA ŞİİR]
 	Default= kisa şiir, Turkish=kısa şiir
+
+	Comparison for [Zonguldak] and [Çankırı]
+	Default= -1, Turkish=1
 
 
 ## 'turkish' object.
@@ -77,6 +87,13 @@ main() {
   print("Default= ${inputU.toLowerCase()}, "
       "Turkish=${turkish.toLowerCase(inputU)}\n");
 
+  // compareToTr
+  var zonguldak = "Zonguldak";
+  var cankiri = "Çankırı";
+  print("Comparison for [$zonguldak] and [$cankiri]");
+  print("Default= ${zonguldak.compareTo(cankiri)}, "
+      "Turkish=${zonguldak.compareToTr(cankiri)}\n");
+
   // sort Default
   var list = ["Az", "ağ", "aç", "ad"];
   print("Input= $list");
@@ -98,6 +115,9 @@ main() {
 
 	LowerCase for [KISA ŞİİR]
 	Default= kisa şiir, Turkish=kısa şiir
+
+	Comparison for [Zonguldak] and [Çankırı]
+	Default= -1, Turkish=1
 
 	Input= [Az, ağ, aç, ad]
 	Default Sort= [Az, ad, aç, ağ]

@@ -14,6 +14,10 @@ extension TurkishStrings on String {
   String toTitleCaseTr() {
     return turkish.toTitleCase(this);
   }
+
+  int compareToTr(String other, [bool ignoreCase = false]) {
+    return turkish.compareTr(this, other, ignoreCase);
+  }
 }
 
 /// Provides methods for correct Turkish case conversions and collation.
@@ -77,6 +81,10 @@ class _Turkish {
     return (input.codeUnitAt(0) == _latinCapitalLetterICode)
         ? "ı"
         : input.toLowerCase();
+  }
+
+  int compareTr(String a, String b, bool ignoreCase) {
+    return _compareTr(a, b, ignoreCase);
   }
 
   /// Some code is used from Dart core.
