@@ -18,14 +18,14 @@ Current implementation does not handle two code-unit variations. Complete specia
 
 Add this line to pubspec.yaml:
 
-    turkish: '>=0.2.0'
+    turkish: '>=0.2.1'
 
 Add this line to the import section:
     
     import 'package:turkish/turkish.dart'
 
 ## Extension methods
-There are three extension methods that can be used for upper, lower and title casing.
+There are four extension methods that can be used for comparison and upper, lower and title casing.
 
 ```dart
 import 'package:turkish/turkish.dart';
@@ -35,32 +35,32 @@ main() {
   // upperCaseTr
   var inputL = "kısa şiir";
   print("UpperCase for [$inputL]");
-  print("Default= ${inputL.toUpperCase()}, "
-      "Turkish=${inputL.toUpperCaseTr()}\n");
+  print("Default = ${inputL.toUpperCase()}, "
+      "Turkish = ${inputL.toUpperCaseTr()}\n");
 
   // lowerCaseTr
   var inputU = "KISA ŞİİR";
   print("LowerCase for [$inputU]");
-  print("Default= ${inputU.toLowerCase()}, "
-      "Turkish=${inputU.toLowerCaseTr()}\n");
+  print("Default = ${inputU.toLowerCase()}, "
+      "Turkish = ${inputU.toLowerCaseTr()}\n");
 
   // compareToTr
   var zonguldak = "Zonguldak";
   var cankiri = "Çankırı";
   print("Comparison for [$zonguldak] and [$cankiri]");
-  print("Default= ${zonguldak.compareTo(cankiri)}, "
-      "Turkish=${zonguldak.compareToTr(cankiri)}\n");
+  print("Default = ${zonguldak.compareTo(cankiri)}, "
+      "Turkish = ${zonguldak.compareToTr(cankiri)}\n");
 }
 ```
 	Output:
 	UpperCase for [kısa şiir]
-	Default= KISA ŞIIR, Turkish=KISA ŞİİR
+	Default = KISA ŞIIR, Turkish = KISA ŞİİR
 
 	LowerCase for [KISA ŞİİR]
-	Default= kisa şiir, Turkish=kısa şiir
+	Default = kisa şiir, Turkish = kısa şiir
 
 	Comparison for [Zonguldak] and [Çankırı]
-	Default= -1, Turkish=1
+	Default = -1, Turkish = 1
 
 
 ## 'turkish' object.
@@ -78,48 +78,48 @@ main() {
   // upperCaseTr
   var inputL = "kısa şiir";
   print("UpperCase for [$inputL]");
-  print("Default= ${inputL.toUpperCase()}, "
-      "Turkish=${turkish.toUpperCase(inputL)}\n");
+  print("Default = ${inputL.toUpperCase()}, "
+      "Turkish = ${turkish.toUpperCase(inputL)}\n");
 
   // lowerCaseTr
   var inputU = "KISA ŞİİR";
   print("LowerCase for [$inputU]");
-  print("Default= ${inputU.toLowerCase()}, "
-      "Turkish=${turkish.toLowerCase(inputU)}\n");
+  print("Default = ${inputU.toLowerCase()}, "
+      "Turkish = ${turkish.toLowerCase(inputU)}\n");
 
   // compareToTr
   var zonguldak = "Zonguldak";
   var cankiri = "Çankırı";
   print("Comparison for [$zonguldak] and [$cankiri]");
-  print("Default= ${zonguldak.compareTo(cankiri)}, "
-      "Turkish=${zonguldak.compareToTr(cankiri)}\n");
+  print("Default = ${zonguldak.compareTo(cankiri)}, "
+      "Turkish = ${zonguldak.compareToTr(cankiri)}\n");
 
   // sort Default
   var list = ["Az", "ağ", "aç", "ad"];
-  print("Input= $list");
-  print("Default Sort= ${list..sort()}");
+  print("Input = $list");
+  print("Default Sort = ${list..sort()}");
 
   // sort Turkish  
   list = ["Az", "ağ", "aç", "ad"];
-  print("Turkish Sort= ${list..sort(turkish.comparator)}");
+  print("Turkish Sort = ${list..sort(turkish.comparator)}");
 
   // sort Turkish ignore case  
   list = ["Az", "ağ", "aç", "ad"];
-  print("Turkish Sort Ignore Case= "
+  print("Turkish Sort Ignore Case = "
       "${list..sort(turkish.comparatorIgnoreCase)}");
 }
 ```
 	Output:
 	UpperCase for [kısa şiir]
-	Default= KISA ŞIIR, Turkish=KISA ŞİİR
+	Default = KISA ŞIIR, Turkish = KISA ŞİİR
 
 	LowerCase for [KISA ŞİİR]
-	Default= kisa şiir, Turkish=kısa şiir
+	Default = kisa şiir, Turkish = kısa şiir
 
 	Comparison for [Zonguldak] and [Çankırı]
-	Default= -1, Turkish=1
+	Default = -1, Turkish = 1
 
-	Input= [Az, ağ, aç, ad]
-	Default Sort= [Az, ad, aç, ağ]
-	Turkish Sort= [Az, aç, ad, ağ]
-	Turkish Sort Ignore Case= [aç, ad, ağ, Az]
+	Input = [Az, ağ, aç, ad]
+	Default Sort = [Az, ad, aç, ağ]
+	Turkish Sort = [Az, aç, ad, ağ]
+	Turkish Sort Ignore Case = [aç, ad, ağ, Az]

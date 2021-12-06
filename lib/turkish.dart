@@ -16,7 +16,7 @@ extension TurkishStrings on String {
   }
 
   int compareToTr(String other, [bool ignoreCase = false]) {
-    return turkish.compareTr(this, other, ignoreCase);
+    return turkish.compareToTr(this, other, ignoreCase);
   }
 }
 
@@ -83,12 +83,12 @@ class _Turkish {
         : input.toLowerCase();
   }
 
-  int compareTr(String a, String b, bool ignoreCase) {
-    return _compareTr(a, b, ignoreCase);
+  int compareToTr(String a, String b, bool ignoreCase) {
+    return _compareToTr(a, b, ignoreCase);
   }
 
   /// Some code is used from Dart core.
-  static int _compareTr(String a, String b, bool ignoreCase) {
+  static int _compareToTr(String a, String b, bool ignoreCase) {
     final aLength = a.length;
     final bLength = b.length;
     final len = (aLength < bLength) ? aLength : bLength;
@@ -129,11 +129,11 @@ class _Turkish {
 
   /// Turkish alphabet aware String Comparator.
   final Comparator<String> comparator =
-      (String a, String b) => _compareTr(a, b, false);
+      (String a, String b) => _compareToTr(a, b, false);
 
   /// Case insensitive Turkish alphabet aware String Comparator.
   final Comparator<String> comparatorIgnoreCase =
-      (String a, String b) => _compareTr(a, b, true);
+      (String a, String b) => _compareToTr(a, b, true);
 }
 
 final _Lookup _codeUnitLookup = _Lookup();
