@@ -1,3 +1,7 @@
+### 0.2.1
+
+- Add String extension method `compareToTr`
+
 ### 0.2.0
 
 - Port to Dart null safety.

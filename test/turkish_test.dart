@@ -44,6 +44,22 @@ main() {
     expect(turkish.toTitleCase(''), '');
   });
 
+  test('compareToTr', () {
+    expect(turkish.compareToTr('d', 'ç', false), 1);
+    expect(turkish.compareToTr('d', 'Ç', false), 1);
+    expect(turkish.compareToTr('D', 'Ç', false), 1);
+    expect(turkish.compareToTr('D', 'ç', false), -1);
+    expect(turkish.compareToTr('Ç', 'ç', false), -1);
+  });
+
+  test('compareToTr Ignore Case', () {
+    expect(turkish.compareToTr('d', 'ç', true), 1);
+    expect(turkish.compareToTr('d', 'Ç', true), 1);
+    expect(turkish.compareToTr('D', 'Ç', true), 1);
+    expect(turkish.compareToTr('D', 'ç', true), 1);
+    expect(turkish.compareToTr('Ç', 'ç', true), 0);
+  });
+
   test('Comparator Test', () {
     expect(["d", "ç"]..sort(turkish.comparator), orderedEquals(["ç", "d"]));
     expect(["ü", "ş", "ö", "i", "ı", "ğ", "ç"]..sort(turkish.comparator),
