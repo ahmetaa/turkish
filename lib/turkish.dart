@@ -1,37 +1,28 @@
-library turkish;
-
 final _Turkish turkish = _Turkish();
 
 extension TurkishStrings on String {
-  String toUpperCaseTr() {
-    return turkish.toUpperCase(this);
-  }
+  String toUpperCaseTr() => turkish.toUpperCase(this);
 
-  String toLowerCaseTr() {
-    return turkish.toLowerCase(this);
-  }
+  String toLowerCaseTr() => turkish.toLowerCase(this);
 
-  String toTitleCaseTr() {
-    return turkish.toTitleCase(this);
-  }
+  String toTitleCaseTr() => turkish.toTitleCase(this);
 
-  int compareToTr(String other, [bool ignoreCase = false]) {
-    return turkish.compareToTr(this, other, ignoreCase);
-  }
+  int compareToTr(String other, [bool ignoreCase = false]) =>
+      turkish.compareToTr(this, other, ignoreCase);
 }
 
 /// Provides methods for correct Turkish case conversions and collation.
 class _Turkish {
-  int _latinCapitalLetterICode = 0x49;
-  int _latinSmallLetterICode = 0x69;
+  final int _latinCapitalLetterICode = 0x49;
+  final int _latinSmallLetterICode = 0x69;
 
   /// Returns upper case form of a Turkish String.
   String toUpperCase(String input) {
     if (input.isEmpty) return "";
     if (input.length == 1) return _toUpper1Length(input);
     final buffer = StringBuffer();
-    final List<int> toAppend = [];
-    for (int codeUnit in input.codeUnits) {
+    final toAppend = <int>[];
+    for (final codeUnit in input.codeUnits) {
       if (codeUnit == _latinSmallLetterICode) {
         if (toAppend.isNotEmpty) {
           buffer.write(String.fromCharCodes(toAppend).toUpperCase());
@@ -48,19 +39,18 @@ class _Turkish {
     return buffer.toString();
   }
 
-  String _toUpper1Length(String input) {
-    return (input.codeUnitAt(0) == _latinSmallLetterICode)
-        ? "İ"
-        : input.toUpperCase();
-  }
+  String _toUpper1Length(String input) =>
+      (input.codeUnitAt(0) == _latinSmallLetterICode)
+          ? "İ"
+          : input.toUpperCase();
 
   /// Returns lower case form of a Turkish String.
   String toLowerCase(String input) {
     if (input.isEmpty) return "";
     if (input.length == 1) return _toLower1Length(input);
     final buffer = StringBuffer();
-    final List<int> toAppend = [];
-    for (int codeUnit in input.codeUnits) {
+    final toAppend = <int>[];
+    for (final codeUnit in input.codeUnits) {
       if (codeUnit == _latinCapitalLetterICode) {
         if (toAppend.isNotEmpty) {
           buffer.write(String.fromCharCodes(toAppend).toLowerCase());
@@ -77,30 +67,28 @@ class _Turkish {
     return buffer.toString();
   }
 
-  String _toLower1Length(String input) {
-    return (input.codeUnitAt(0) == _latinCapitalLetterICode)
-        ? "ı"
-        : input.toLowerCase();
-  }
+  String _toLower1Length(String input) =>
+      (input.codeUnitAt(0) == _latinCapitalLetterICode)
+          ? "ı"
+          : input.toLowerCase();
 
-  int compareToTr(String a, String b, bool ignoreCase) {
-    return _compareToTr(a, b, ignoreCase);
-  }
+  int compareToTr(String a, String b, bool ignoreCase) =>
+      _compareToTr(a, b, ignoreCase);
 
   /// Some code is used from Dart core.
   static int _compareToTr(String a, String b, bool ignoreCase) {
     final aLength = a.length;
     final bLength = b.length;
     final len = (aLength < bLength) ? aLength : bLength;
-    for (int i = 0; i < len; i++) {
-      int aCodePoint = a.codeUnitAt(i);
-      int bCodePoint = b.codeUnitAt(i);
+    for (var i = 0; i < len; i++) {
+      var aCodePoint = a.codeUnitAt(i);
+      var bCodePoint = b.codeUnitAt(i);
 
-      int aCodePointTr = ignoreCase != true
+      final aCodePointTr = ignoreCase != true
           ? _codeUnitLookup.getOrder(aCodePoint)
           : _codeUnitLookup.getOrderIgnoreCase(aCodePoint);
 
-      int bCodePointTr = ignoreCase != true
+      final bCodePointTr = ignoreCase != true
           ? _codeUnitLookup.getOrder(bCodePoint)
           : _codeUnitLookup.getOrderIgnoreCase(bCodePoint);
 
@@ -144,13 +132,13 @@ const alphabet =
     "AÂBCÇDEFGĞHIİÎJKLMNOÖPQRSŞTUÛÜVWXYZaâbcçdefgğhıiîjklmnoöpqrsştuûüvwxyz";
 
 class _Lookup {
-  var orderLookup = List<int>.filled(0x160, -1);
-  var orderLookupIgnoreCase = List<int>.filled(0x160, -1);
+  List<int> orderLookup = List<int>.filled(0x160, -1);
+  List<int> orderLookupIgnoreCase = List<int>.filled(0x160, -1);
 
   _Lookup() {
-    final letterCount = alphabet.length ~/ 2;
-    for (int i = 0; i < alphabet.length; ++i) {
-      int index = alphabet.codeUnitAt(i);
+    const letterCount = alphabet.length ~/ 2;
+    for (var i = 0; i < alphabet.length; ++i) {
+      final index = alphabet.codeUnitAt(i);
       orderLookup[index] = i;
       orderLookupIgnoreCase[index] = i % letterCount;
     }
