@@ -1,3 +1,4 @@
+
 final _Turkish turkish = _Turkish();
 
 extension TurkishStrings on String {
@@ -6,6 +7,7 @@ extension TurkishStrings on String {
   String toLowerCaseTr() => turkish.toLowerCase(this);
 
   String toTitleCaseTr() => turkish.toTitleCase(this);
+  String toPascalCaseTr() => turkish.toPascalCase(this);
 
   int compareToTr(String other, [bool ignoreCase = false]) =>
       turkish.compareToTr(this, other, ignoreCase);
@@ -66,6 +68,17 @@ class _Turkish {
     }
     return buffer.toString();
   }
+  
+    /// Returns Pascal case form of a Turkish String.
+
+    String toPascalCase(String input) {
+      if (input.isEmpty) return "";
+    if (input.length == 1) return _toUpper1Length(input);
+    
+
+    return '${turkish.toUpperCase(input.substring(0, 1))}${turkish.toLowerCase(input.substring(1))}';
+  }
+ 
 
   String _toLower1Length(String input) =>
       (input.codeUnitAt(0) == _latinCapitalLetterICode)
